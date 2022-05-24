@@ -1,0 +1,34 @@
+[conn10] replSetReconfig admin command received from client; new config: 
+{ _id: "rs0", 
+  version: 3, 
+  protocolVersion: 1, 
+  writeConcernMajorityJournalDefault: true, 
+  members: [ 
+        { _id: 0, 
+          host: "192.168.204.120:27017", 
+          arbiterOnly: false, 
+          buildIndexes: true, 
+          hidden: false, 
+          priority: 1, 
+          tags: {}, 
+          slaveDelay: 0, 
+          votes: 1 }, 
+        { _id: 1, 
+          host: "192.168.235.129:27017" }, 
+        { _id: 2, 
+          host: "192.168.196.179:27017" } ], 
+  settings: { 
+        chainingAllowed: true, 
+        heartbeatIntervalMillis: 2000, 
+        heartbeatTimeoutSecs: 10, 
+        electionTimeoutMillis: 10000, 
+        catchUpTimeoutMillis: -1, 
+        catchUpTakeoverDelayMillis: 30000, 
+        getLastErrorModes: {}, 
+        getLastErrorDefaults: { 
+          w: 1, 
+          wtimeout: 0 }, 
+        replicaSetId: ObjectId('627a5d5c26aba10f865dde94') } }
+2022-05-10T12:44:26.698+0000 I  NETWORK  [listener] connection accepted from 127.0.0.1:38632 #11 (2 connections now open)
+2022-05-10T12:44:31.474+0000 I  CONNPOOL [Replication] Connecting to 192.168.196.179:27017
+2022-05-10T12:44:36.279+0000 I  CONNPOOL [Replication] Connecting to 192.168.235.129:27017

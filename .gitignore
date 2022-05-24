@@ -1,0 +1,12 @@
+.bash_history
+.dbshell
+.bash_logout
+.wget-hsts
+.sudo_as_admin_successful
+.ssh/
+.viminfo
+.cache
+.bashrc
+.kube
+.docker
+YCSB/
