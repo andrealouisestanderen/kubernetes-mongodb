@@ -1,0 +1,284 @@
+andrea@master-node-0:~$ git commit -m "Andrea you need to keep things in git"
+[master (root-commit) 1d3245d] Andrea you need to keep things in git
+ Committer: Ubuntu <andrea@master-node-0.5kflnhftb4fuhekuqcrxpskete.ax.internal.cloudapp.net>
+Your name and email address were configured automatically based
+on your username and hostname. Please check that they are accurate.
+You can suppress this message by setting them explicitly. Run the
+following command and follow the instructions in your editor to edit
+your configuration file:
+
+    git config --global --edit
+
+After doing this, you may fix the identity used for this commit with:
+
+    git commit --amend --reset-author
+
+ 22 files changed, 5138 insertions(+)
+ create mode 100644 .gitignore
+ create mode 100644 calico.yaml
+ create mode 100644 deployment-kubernetes-mongodb/README.md
+ create mode 100644 deployment-kubernetes-mongodb/mongodb-client.yaml
+ create mode 100644 deployment-kubernetes-mongodb/mongodb-deployment.yaml
+ create mode 100644 deployment-kubernetes-mongodb/mongodb-nodeport-svc.yaml
+ create mode 100644 deployment-kubernetes-mongodb/mongodb-pv.yaml
+ create mode 100644 deployment-kubernetes-mongodb/mongodb-pvc.yaml
+ create mode 100644 deployment-kubernetes-mongodb/mongodb-secrets.yaml
+ create mode 100644 kubernetes-storage/local-storage.yaml
+ create mode 100644 kubernetes-storage/pv-0.yaml
+ create mode 100644 kubernetes-storage/pv-1.yaml
+ create mode 100644 kubernetes-storage/pv-2.yaml
+ create mode 100644 kubernetes-storage/pv-3.yaml
+ create mode 100644 mongodb-pvc.yaml
+ create mode 100644 mongodb-rbac.yaml
+ create mode 100644 mongodb-services.yaml
+ create mode 100644 output-replset.yaml
+ create mode 100644 statefulset-kubernetes-mongodb/app-mongo/Dockerfile
+ create mode 100644 statefulset-kubernetes-mongodb/mongodb-headless.yaml
+ create mode 100644 statefulset-kubernetes-mongodb/mongodb-secret.yaml
+ create mode 100644 statefulset-kubernetes-mongodb/mongodb-statefulset.yaml
+andrea@master-node-0:~$ tig
+
+Command 'tig' not found, but can be installed with:
+
+sudo apt install tig
+
+andrea@master-node-0:~$ sudo apt install tig
+Reading package lists... Done
+Building dependency tree       
+Reading state information... Done
+The following packages were automatically installed and are no longer required:
+  linux-azure-5.4-cloud-tools-5.4.0-1070 linux-azure-5.4-cloud-tools-5.4.0-1072 linux-azure-5.4-cloud-tools-5.4.0-1073 linux-azure-5.4-cloud-tools-5.4.0-1074
+  linux-azure-5.4-headers-5.4.0-1070 linux-azure-5.4-headers-5.4.0-1072 linux-azure-5.4-headers-5.4.0-1073 linux-azure-5.4-headers-5.4.0-1074 linux-azure-5.4-tools-5.4.0-1070
+  linux-azure-5.4-tools-5.4.0-1072 linux-azure-5.4-tools-5.4.0-1073 linux-azure-5.4-tools-5.4.0-1074
+Use 'sudo apt autoremove' to remove them.
+The following NEW packages will be installed:
+  tig
+0 upgraded, 1 newly installed, 0 to remove and 27 not upgraded.
+Need to get 299 kB of archives.
+After this operation, 840 kB of additional disk space will be used.
+Get:1 http://azure.archive.ubuntu.com/ubuntu bionic/universe amd64 tig amd64 2.3.0-1 [299 kB]
+Fetched 299 kB in 0s (3534 kB/s)
+Selecting previously unselected package tig.
+(Reading database ... 189626 files and directories currently installed.)
+Preparing to unpack .../archives/tig_2.3.0-1_amd64.deb ...
+Unpacking tig (2.3.0-1) ...
+Setting up tig (2.3.0-1) ...
+Processing triggers for man-db (2.8.3-2ubuntu0.1) ...
+andrea@master-node-0:~$ tmux
+[exited]
+andrea@master-node-0:~$ calicoctl get profiles
+NAME                                                 
+projectcalico-default-allow                          
+kns.benchmark                                        
+kns.default                                          
+kns.kube-node-lease                                  
+kns.kube-public                                      
+kns.kube-system                                      
+kns.mongo-statefulset                                
+ksa.benchmark.default                                
+ksa.default.default                                  
+ksa.default.mongo-account                            
+ksa.kube-node-lease.default                          
+ksa.kube-public.default                              
+ksa.kube-system.attachdetach-controller              
+ksa.kube-system.bootstrap-signer                     
+ksa.kube-system.calico-cni-plugin                    
+ksa.kube-system.calico-kube-controllers              
+ksa.kube-system.calico-node                          
+ksa.kube-system.calicoctl                            
+ksa.kube-system.certificate-controller               
+ksa.kube-system.clusterrole-aggregation-controller   
+ksa.kube-system.coredns                              
+ksa.kube-system.cronjob-controller                   
+ksa.kube-system.daemon-set-controller                
+ksa.kube-system.default                              
+ksa.kube-system.deployment-controller                
+ksa.kube-system.disruption-controller                
+ksa.kube-system.endpoint-controller                  
+ksa.kube-system.endpointslice-controller             
+ksa.kube-system.endpointslicemirroring-controller    
+ksa.kube-system.ephemeral-volume-controller          
+ksa.kube-system.expand-controller                    
+ksa.kube-system.generic-garbage-collector            
+ksa.kube-system.horizontal-pod-autoscaler            
+ksa.kube-system.job-controller                       
+ksa.kube-system.kube-proxy                           
+ksa.kube-system.namespace-controller                 
+ksa.kube-system.node-controller                      
+ksa.kube-system.persistent-volume-binder             
+ksa.kube-system.pod-garbage-collector                
+ksa.kube-system.pv-protection-controller             
+ksa.kube-system.pvc-protection-controller            
+ksa.kube-system.replicaset-controller                
+ksa.kube-system.replication-controller               
+ksa.kube-system.resourcequota-controller             
+ksa.kube-system.root-ca-cert-publisher               
+ksa.kube-system.service-account-controller           
+ksa.kube-system.service-controller                   
+ksa.kube-system.statefulset-controller               
+ksa.kube-system.token-cleaner                        
+ksa.kube-system.ttl-after-finished-controller        
+ksa.kube-system.ttl-controller                       
+ksa.mongo-statefulset.default                        
+
+andrea@master-node-0:~$ kubectl get crd
+NAME                                                  CREATED AT
+bgpconfigurations.crd.projectcalico.org               2022-05-15T16:01:50Z
+bgppeers.crd.projectcalico.org                        2022-05-15T16:01:50Z
+blockaffinities.crd.projectcalico.org                 2022-05-15T16:01:50Z
+caliconodestatuses.crd.projectcalico.org              2022-05-15T16:01:50Z
+clusterinformations.crd.projectcalico.org             2022-05-15T16:01:50Z
+felixconfigurations.crd.projectcalico.org             2022-05-15T16:01:50Z
+globalnetworkpolicies.crd.projectcalico.org           2022-05-15T16:01:50Z
+globalnetworksets.crd.projectcalico.org               2022-05-15T16:01:50Z
+hostendpoints.crd.projectcalico.org                   2022-05-15T16:01:50Z
+ipamblocks.crd.projectcalico.org                      2022-05-15T16:01:50Z
+ipamconfigs.crd.projectcalico.org                     2022-05-15T16:01:50Z
+ipamhandles.crd.projectcalico.org                     2022-05-15T16:01:50Z
+ippools.crd.projectcalico.org                         2022-05-15T16:01:50Z
+ipreservations.crd.projectcalico.org                  2022-05-15T16:01:50Z
+kubecontrollersconfigurations.crd.projectcalico.org   2022-05-15T16:01:50Z
+networkpolicies.crd.projectcalico.org                 2022-05-15T16:01:50Z
+networksets.crd.projectcalico.org                     2022-05-15T16:01:51Z
+andrea@master-node-0:~$ kubectl get ippools.crd.projectcalico.org 
+NAME                  AGE
+default-ipv4-ippool   9d
+andrea@master-node-0:~$ kubectl edit ippools.crd.projectcalico.org 
+ippool.crd.projectcalico.org/default-ipv4-ippool edited
+andrea@master-node-0:~$ sudo route -n
+Kernel IP routing table
+Destination     Gateway         Genmask         Flags Metric Ref    Use Iface
+0.0.0.0         10.1.1.1        0.0.0.0         UG    100    0        0 eth0
+10.1.1.0        0.0.0.0         255.255.255.0   U     0      0        0 eth0
+168.63.129.16   10.1.1.1        255.255.255.255 UGH   100    0        0 eth0
+169.254.169.254 10.1.1.1        255.255.255.255 UGH   100    0        0 eth0
+172.17.0.0      0.0.0.0         255.255.0.0     U     0      0        0 docker0
+192.168.196.128 0.0.0.0         255.255.255.192 U     0      0        0 *
+192.168.196.134 0.0.0.0         255.255.255.255 UH    0      0        0 caliade9e914151
+192.168.196.136 0.0.0.0         255.255.255.255 UH    0      0        0 calidfa85360b17
+192.168.196.152 0.0.0.0         255.255.255.255 UH    0      0        0 cali872fd71a728
+192.168.196.153 0.0.0.0         255.255.255.255 UH    0      0        0 calif0d98d85877
+192.168.204.64  192.168.204.73  255.255.255.192 UG    0      0        0 vxlan.calico
+192.168.235.128 192.168.235.139 255.255.255.192 UG    0      0        0 vxlan.calico
+andrea@master-node-0:~$ sudo route -n
+Kernel IP routing table
+Destination     Gateway         Genmask         Flags Metric Ref    Use Iface
+0.0.0.0         10.1.1.1        0.0.0.0         UG    100    0        0 eth0
+10.1.1.0        0.0.0.0         255.255.255.0   U     0      0        0 eth0
+168.63.129.16   10.1.1.1        255.255.255.255 UGH   100    0        0 eth0
+169.254.169.254 10.1.1.1        255.255.255.255 UGH   100    0        0 eth0
+172.17.0.0      0.0.0.0         255.255.0.0     U     0      0        0 docker0
+192.168.196.128 0.0.0.0         255.255.255.192 U     0      0        0 *
+192.168.196.134 0.0.0.0         255.255.255.255 UH    0      0        0 caliade9e914151
+192.168.196.136 0.0.0.0         255.255.255.255 UH    0      0        0 calidfa85360b17
+192.168.196.152 0.0.0.0         255.255.255.255 UH    0      0        0 cali872fd71a728
+192.168.196.153 0.0.0.0         255.255.255.255 UH    0      0        0 calif0d98d85877
+192.168.204.64  192.168.204.73  255.255.255.192 UG    0      0        0 vxlan.calico
+192.168.235.128 192.168.235.139 255.255.255.192 UG    0      0        0 vxlan.calico
+andrea@master-node-0:~$ sudo route -n
+Kernel IP routing table
+Destination     Gateway         Genmask         Flags Metric Ref    Use Iface
+0.0.0.0         10.1.1.1        0.0.0.0         UG    100    0        0 eth0
+10.1.1.0        0.0.0.0         255.255.255.0   U     0      0        0 eth0
+168.63.129.16   10.1.1.1        255.255.255.255 UGH   100    0        0 eth0
+169.254.169.254 10.1.1.1        255.255.255.255 UGH   100    0        0 eth0
+172.17.0.0      0.0.0.0         255.255.0.0     U     0      0        0 docker0
+192.168.196.128 0.0.0.0         255.255.255.192 U     0      0        0 *
+192.168.196.134 0.0.0.0         255.255.255.255 UH    0      0        0 caliade9e914151
+192.168.196.136 0.0.0.0         255.255.255.255 UH    0      0        0 calidfa85360b17
+192.168.196.152 0.0.0.0         255.255.255.255 UH    0      0        0 cali872fd71a728
+192.168.196.153 0.0.0.0         255.255.255.255 UH    0      0        0 calif0d98d85877
+192.168.204.64  192.168.204.73  255.255.255.192 UG    0      0        0 vxlan.calico
+192.168.235.128 192.168.235.139 255.255.255.192 UG    0      0        0 vxlan.calico
+andrea@master-node-0:~$ kubectl edit ippools.crd.projectcalico.org 
+ippool.crd.projectcalico.org/default-ipv4-ippool edited
+andrea@master-node-0:~$ sudo route -n
+Kernel IP routing table
+Destination     Gateway         Genmask         Flags Metric Ref    Use Iface
+0.0.0.0         10.1.1.1        0.0.0.0         UG    100    0        0 eth0
+10.1.1.0        0.0.0.0         255.255.255.0   U     0      0        0 eth0
+168.63.129.16   10.1.1.1        255.255.255.255 UGH   100    0        0 eth0
+169.254.169.254 10.1.1.1        255.255.255.255 UGH   100    0        0 eth0
+172.17.0.0      0.0.0.0         255.255.0.0     U     0      0        0 docker0
+192.168.0.0     -               255.255.255.0   !     0      -        0 -
+192.168.2.0     10.1.1.6        255.255.255.255 UGH   0      0        0 tunl0
+192.168.196.128 0.0.0.0         255.255.255.192 U     0      0        0 *
+192.168.196.134 0.0.0.0         255.255.255.255 UH    0      0        0 caliade9e914151
+192.168.196.136 0.0.0.0         255.255.255.255 UH    0      0        0 calidfa85360b17
+192.168.196.152 0.0.0.0         255.255.255.255 UH    0      0        0 cali872fd71a728
+192.168.196.153 0.0.0.0         255.255.255.255 UH    0      0        0 calif0d98d85877
+192.168.204.64  10.1.1.7        255.255.255.192 UG    0      0        0 tunl0
+192.168.235.128 10.1.1.6        255.255.255.192 UG    0      0        0 tunl0
+andrea@master-node-0:~$ kubectl edit ippools.crd.projectcalico.org 
+ippool.crd.projectcalico.org/default-ipv4-ippool edited
+andrea@master-node-0:~$ kubectl get pods
+NAME                READY   STATUS    RESTARTS   AGE
+mongodb-replica-0   2/2     Running   0          4d11h
+mongodb-replica-1   2/2     Running   0          4d11h
+mongodb-replica-2   2/2     Running   0          4d11h
+andrea@master-node-0:~$ kubectl get pods -o wide
+NAME                READY   STATUS    RESTARTS   AGE     IP                NODE            NOMINATED NODE   READINESS GATES
+mongodb-replica-0   2/2     Running   0          4d11h   192.168.204.72    worker0         <none>           <none>
+mongodb-replica-1   2/2     Running   0          4d11h   192.168.235.138   worker1         <none>           <none>
+mongodb-replica-2   2/2     Running   0          4d11h   192.168.196.136   master-node-0   <none>           <none>
+andrea@master-node-0:~$ kubectl exec -it mongodb-replica-1 -- /bin/bash
+Defaulted container "mongodb" out of: mongodb, mongo-sidecar
+root@mongodb-replica-1:/# apt update
+Hit:1 http://archive.ubuntu.com/ubuntu bionic InRelease
+Get:2 http://archive.ubuntu.com/ubuntu bionic-updates InRelease [88.7 kB]             
+Get:3 http://archive.ubuntu.com/ubuntu bionic-backports InRelease [74.6 kB]                                                                       
+Ign:4 http://repo.mongodb.org/apt/ubuntu bionic/mongodb-org/4.2 InRelease                                                                         
+Get:5 http://security.ubuntu.com/ubuntu bionic-security InRelease [88.7 kB]                                     
+Get:6 http://repo.mongodb.org/apt/ubuntu bionic/mongodb-org/4.2 Release [3951 B]   
+Get:7 http://archive.ubuntu.com/ubuntu bionic-updates/restricted amd64 Packages [983 kB]                   
+Get:8 http://repo.mongodb.org/apt/ubuntu bionic/mongodb-org/4.2 Release.gpg [801 B]                                 
+Get:9 http://archive.ubuntu.com/ubuntu bionic-updates/universe amd64 Packages [2278 kB]                                        
+Get:10 http://archive.ubuntu.com/ubuntu bionic-updates/main amd64 Packages [3214 kB]                                  
+Get:11 http://repo.mongodb.org/apt/ubuntu bionic/mongodb-org/4.2/multiverse amd64 Packages [18.4 kB]
+Get:12 http://security.ubuntu.com/ubuntu bionic-security/restricted amd64 Packages [949 kB]
+Get:13 http://security.ubuntu.com/ubuntu bionic-security/main amd64 Packages [2779 kB]
+Get:14 http://security.ubuntu.com/ubuntu bionic-security/universe amd64 Packages [1503 kB]
+Fetched 12.0 MB in 2s (5049 kB/s)                       
+Reading package lists... Done
+Building dependency tree       
+Reading state information... Done
+22 packages can be upgraded. Run 'apt list --upgradable' to see them.
+root@mongodb-replica-1:/# ping google.com
+bash: ping: command not found
+root@mongodb-replica-1:/# curl
+bash: curl: command not found
+root@mongodb-replica-1:/# apt install curl
+Reading package lists... Done
+Building dependency tree       
+Reading state information... Done
+The following additional packages will be installed:
+  libcurl4
+The following NEW packages will be installed:
+  curl
+The following packages will be upgraded:
+  libcurl4
+1 upgraded, 1 newly installed, 0 to remove and 21 not upgraded.
+Need to get 379 kB of archives.
+After this operation, 397 kB of additional disk space will be used.
+Do you want to continue? [Y/n] 
+Get:1 http://archive.ubuntu.com/ubuntu bionic-updates/main amd64 libcurl4 amd64 7.58.0-2ubuntu3.18 [220 kB]
+Get:2 http://archive.ubuntu.com/ubuntu bionic-updates/main amd64 curl amd64 7.58.0-2ubuntu3.18 [159 kB]
+Fetched 379 kB in 0s (3470 kB/s)
+debconf: delaying package configuration, since apt-utils is not installed
+(Reading database ... 7060 files and directories currently installed.)
+Preparing to unpack .../libcurl4_7.58.0-2ubuntu3.18_amd64.deb ...
+Unpacking libcurl4:amd64 (7.58.0-2ubuntu3.18) over (7.58.0-2ubuntu3.16) ...
+Selecting previously unselected package curl.
+Preparing to unpack .../curl_7.58.0-2ubuntu3.18_amd64.deb ...
+Unpacking curl (7.58.0-2ubuntu3.18) ...
+Setting up libcurl4:amd64 (7.58.0-2ubuntu3.18) ...
+Setting up curl (7.58.0-2ubuntu3.18) ...
+Processing triggers for libc-bin (2.27-3ubuntu1.5) ...
+root@mongodb-replica-1:/# curl google.com
+<HTML><HEAD><meta http-equiv="content-type" content="text/html;charset=utf-8">
+<TITLE>301 Moved</TITLE></HEAD><BODY>
+<H1>301 Moved</H1>
+The document has moved
+<A HREF="http://www.google.com/">here</A>.
+</BODY></HTML>
+
