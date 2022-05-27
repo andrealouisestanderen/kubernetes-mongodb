@@ -12,3 +12,9 @@
 YCSB/
 *.swp
 *.swo
+figures/
+.m2/*
+.mongodb/*
+.profile
+.mongorc.js
+.tig_history
