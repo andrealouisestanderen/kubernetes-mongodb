@@ -10,3 +10,5 @@
 .kube
 .docker
 YCSB/
+*.swp
+*.swo
