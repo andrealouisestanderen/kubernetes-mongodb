@@ -12,7 +12,6 @@
 YCSB/
 *.swp
 *.swo
-figures/
 .m2/*
 .mongodb/*
 .profile
